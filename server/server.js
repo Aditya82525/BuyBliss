@@ -4,10 +4,10 @@ const userRoutes = require("./routes/userRoutes");
 const productRoute = require("./routes/productRoute");
 const cartRoute = require("./routes/cartRoute");
 const checkoutRoutes = require("./routes/checkoutRoutes");
-
+const orderRoutes = require("./routes/orderRoutes");
 const cors = require("cors");
 const dotenv = require("dotenv");
-const morgan = require("morgan"); // for logging (optional but useful)
+const morgan = require("morgan"); 
 
 dotenv.config();
 
@@ -17,7 +17,6 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-// Optional: better debugging logs in development
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
@@ -34,7 +33,7 @@ app.use("/api/users", userRoutes);
 app.use("/api/products", productRoute);
 app.use("/api/cart", cartRoute);
 app.use("/api/checkout", checkoutRoutes);
-
+app.use("/api/orders", orderRoutes);
 // Error Handling Middleware
 app.use((req, res, next) => {
   res.status(404).json({ message: "Route not found" });
