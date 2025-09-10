@@ -5,6 +5,7 @@ const productRoute = require("./routes/productRoute");
 const cartRoute = require("./routes/cartRoute");
 const checkoutRoutes = require("./routes/checkoutRoutes");
 const orderRoutes = require("./routes/orderRoutes");
+const uploadRoutes = require("./routes/uploadRoutes");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const morgan = require("morgan"); 
@@ -34,6 +35,7 @@ app.use("/api/products", productRoute);
 app.use("/api/cart", cartRoute);
 app.use("/api/checkout", checkoutRoutes);
 app.use("/api/orders", orderRoutes);
+app.use("/api/upload", uploadRoutes);
 // Error Handling Middleware
 app.use((req, res, next) => {
   res.status(404).json({ message: "Route not found" });
